@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from './components/ui/tabs';
 import { CMSPortal } from './components/CMSPortal';
 import { InteractiveKiosk } from './components/InteractiveKiosk';
@@ -27,27 +27,10 @@ export default function App() {
   const [activeView, setActiveView] = useState('kiosk');
 
   /* ===============================
-     AUTO LOGIN ON PAGE REFRESH
-  =============================== */
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const role = localStorage.getItem('role') as 'admin' | 'kruger-staff' | null;
-
-    if (token && role) {
-      setIsStaffMode(true);
-      setIsLoggedIn(true);
-      setStaffRole(role);
-      setActiveView(role === 'admin' ? 'cms' : 'tracking');
-    }
-  }, []);
-
-  /* ===============================
      LOGOUT FUNCTION
   =============================== */
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('role');
-    localStorage.removeItem('name');
+    localStorage.clear();
 
     setIsLoggedIn(false);
     setIsStaffMode(false);
@@ -56,7 +39,7 @@ export default function App() {
   };
 
   /* ===============================
-     PUBLIC MODE
+     PUBLIC MODE (ALWAYS DEFAULT)
   =============================== */
   if (!isStaffMode) {
     return (
@@ -91,6 +74,7 @@ export default function App() {
   =============================== */
   return (
     <div className="h-screen flex flex-col bg-background">
+
       {/* TOP NAV */}
       <div className="border-b bg-card px-6 py-3 flex justify-between items-center">
         <div>
@@ -159,6 +143,7 @@ export default function App() {
 
         {/* TAB CONTENT */}
         <div className="flex-1 overflow-hidden">
+
           {staffRole === 'admin' && (
             <TabsContent value="cms" className="h-full m-0">
               <CMSPortal />
@@ -188,6 +173,7 @@ export default function App() {
           <TabsContent value="flights" className="h-full m-0">
             <FlightPortal />
           </TabsContent>
+
         </div>
       </Tabs>
 

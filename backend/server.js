@@ -24,6 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/destinations', require('./routes/destinations'));
 app.use('/api/sightings', require('./routes/sightings'));
+app.use('/api/analytics', require('./routes/analytics'));
+
 
 /* ===============================
    HEALTH CHECK
