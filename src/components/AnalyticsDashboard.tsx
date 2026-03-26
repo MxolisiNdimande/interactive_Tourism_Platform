@@ -7,9 +7,6 @@ import {
   Bar,
   LineChart,
   Line,
-  PieChart,
-  Pie,
-  Cell,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -19,12 +16,6 @@ import {
 } from 'recharts';
 import { devices, destinations } from '../lib/mockData';
 import {
-  Activity,
-  Users,
-  TrendingUp,
-  Monitor,
-  AlertCircle,
-  CheckCircle,
   Trophy
 } from 'lucide-react';
 

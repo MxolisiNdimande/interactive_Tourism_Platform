@@ -3,7 +3,7 @@ import { Badge } from './ui/badge';
 import { Button } from './ui/button';
 import { accommodations } from '../lib/accommodationData';
 import { Star, MapPin, Phone, Mail, Globe, Wifi, UtensilsCrossed, Waves } from 'lucide-react';
-import { toast } from 'sonner@2.0.3';
+import { toast } from 'sonner';
 
 interface AccommodationViewProps {
   destinationIds?: string[];
